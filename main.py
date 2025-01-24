@@ -1,3 +1,7 @@
+# User pool - oflyw1
+# App clients
+# App client: cognito_demo2
+
 # filename: main.py
 from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse, RedirectResponse
@@ -13,7 +17,14 @@ app = FastAPI()
 
 # 1) Session middleware for storing user info in a secure, signed cookie.
 #    Use a truly random & persistent secret in production (e.g. from env vars).
-app.add_middleware(SessionMiddleware, secret_key=os.urandom(24))
+import os
+
+# app.add_middleware(SessionMiddleware, secret_key=os.urandom(24))
+
+#did this thinking maybe every server restarat its different and causing problems
+SECRET_KEY = os.environ.get("SESSION_SECRET_KEY", "some-hardcoded-dev-key")
+app.add_middleware(SessionMiddleware, secret_key=SECRET_KEY)
+
 
 # 2) Configure OAuth with Authlib for FastAPI/Starlette
 oauth = OAuth()
@@ -73,3 +84,9 @@ async def authorize(request: Request):
 def logout(request: Request):
     request.session.pop("user", None)
     return RedirectResponse(url="/")
+
+
+#jpvano@gmail.com
+#jvanalmelo
+#1234abcd!@#$ABCD
+# uvicorn main:app --host localhost --port 8000

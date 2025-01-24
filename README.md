@@ -37,7 +37,7 @@ This is a demo application that demonstrates how to integrate AWS Cognito authen
 
 1. Start the FastAPI application:
     ```bash
-    uvicorn main:app --reload
+    uvicorn main:app --host localhost --port 8000
     ```
 
 2. Open your browser and navigate to `http://127.0.0.1:8000`.
@@ -52,3 +52,4 @@ This is a demo application that demonstrates how to integrate AWS Cognito authen
 ## License
 
 This project is licensed under the MIT License.
+

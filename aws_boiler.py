@@ -12,6 +12,7 @@ oauth.register(
   client_id='2sl1dgle5rlrglaac5igkc5ii6',
   client_secret='1f81ao836ss33l150njnc7t2babh8sfhe5nh7ng2a2v92a4l0au',
   server_metadata_url='https://cognito-idp.us-east-1.amazonaws.com/us-east-1_6sjEBn2AH/.well-known/openid-configuration',
+
   client_kwargs={'scope': 'phone openid email'}
 )
 
